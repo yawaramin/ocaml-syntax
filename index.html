@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>OCaml Syntax</title>
+  <link href="railroad.css" rel="stylesheet">
+</head>
+
+<body>
+  <h1>OCaml Syntax Diagrams</h1>
+
+  <p>Railroad diagrams. Generated using
+    <a href="https://github.com/tabatkins/railroad-diagrams">Tab Atkins' Railroad Diagrams</a>
+    library.
+  </p>
+
+  <h2 id="module">Module</h2>
+
+  <p>Files are just modules without the <code>struct</code> and <code>end</code>
+    keywords.</p>
+
+  <div id="module-diagram"></div>
+  <script type="module" src="./module.js"></script>
+
+  <h2 id="module-ident">Module identifier</h2>
+  <div id="module-ident-diagram"></div>
+  <script type="module" src="./module-ident.js"></script>
+
+  <h2 id="uppercase-letter">Uppercase letter</h2>
+  <div id="uppercase-letter-diagram"></div>
+  <script type="module" src="./uppercase-letter.js"></script>
+
+  <h2 id="lowercase-letter">Lowercase letter</h2>
+  <div id="lowercase-letter-diagram"></div>
+  <script type="module" src="./lowercase-letter.js"></script>
+
+  <h2 id="number-literal">Number literal</h2>
+  <div id="number-literal-diagram"></div>
+  <script type="module" src="./number-literal.js"></script>
+
+  <h2 id="record_type">Record type</h2>
+  <div id="record-type-diagram"></div>
+  <script type="module" src="./record-type.js"></script>
+</body>
+
+</html>
