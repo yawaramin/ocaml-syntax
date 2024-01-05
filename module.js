@@ -28,7 +28,7 @@ rr.Diagram(
         ),
         rr.Sequence(
           "let",
-          rr.Choice(0, pat, rr.Sequence(ident, rr.ZeroOrMore(pat))),
+          rr.Choice(0, pat, rr.Sequence(ident, rr.OneOrMore(pat))),
           "=",
           expr,
         )
