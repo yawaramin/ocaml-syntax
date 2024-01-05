@@ -1,5 +1,5 @@
 import rr from "./railroad.js";
-import { module, moduleIdent, moduleType, moduleTypeIdent, typeVar, ident, typeExpr, expr, pat } from "./defs.js";
+import { module, moduleIdent, moduleType, typeVar, ident, typeExpr, expr, pat } from "./defs.js";
 
 rr.Diagram(
   rr.Sequence(
@@ -9,7 +9,7 @@ rr.Diagram(
         rr.Sequence(rr.Choice(0, "open", "open!"), module),
         rr.Sequence("include", module),
         rr.Sequence("module", moduleIdent, "=", module),
-        rr.Sequence("module type", moduleTypeIdent, "=", moduleType),
+        rr.Sequence("module type", moduleIdent, "=", moduleType),
         rr.Sequence(
           "type",
           rr.Choice(0,

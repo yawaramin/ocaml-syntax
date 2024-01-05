@@ -6,7 +6,6 @@ export const lowercaseLetter = rr.NonTerminal("lowercase_letter", { href: "#lowe
 export const module = rr.NonTerminal("module", { href: "#module" });
 export const moduleIdent = rr.NonTerminal("module_ident", { href: "#module-ident" });
 export const moduleType = rr.NonTerminal("module_type", { href: "#module-type" });
-export const moduleTypeIdent = rr.NonTerminal("module_type_ident", { href: "#module-type-ident" });
 export const numberLiteral = rr.NonTerminal("number_literal", { href: "#number-literal" });
 export const pat = rr.NonTerminal("pat", { href: "#pat" });
 export const typeExpr = rr.NonTerminal("type_expr", { href: "#type-expr" });
