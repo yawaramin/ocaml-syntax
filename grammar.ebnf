@@ -1,0 +1,57 @@
+Ident ::= (Letter | '_') (Letter | [0-9_'])* /* ws: explicit */
+CapitalizedIdent ::= [A-Z] (Letter | [0-9_'])* /* ws: explicit */
+LowercaseIdent ::= [a-z] (Letter | [0-9_'])* /* ws: explicit */
+Letter ::= [A-Za-z]
+
+IntegerLiteral ::= '-'? [0-9] [0-9_]*
+  | '-'? '0' [Xx] [0-9A-Fa-f] [0-9A-Fa-f_]*
+  | '-'? '0' [Oo] [0-7] [0-7_]*
+  | '-'? '0' [Bb] [01] [01_]*
+  /* ws: explicit */
+
+Int32Literal ::= IntegerLiteral 'l' /* ws: explicit */
+Int64Literal ::= IntegerLiteral 'L' /* ws: explicit */
+NativeintLiteral ::= IntegerLiteral 'n' /* ws: explicit */
+
+FloatLiteral ::= '-'? [0-9] [0-9_]* ('.' [0-9_]*)? ([Ee] [+-]? [0-9] [0-9_]*)?
+  | '-'? '0' [Xx] [0-9A-Fa-f] [0-9A-Fa-f_]* ('.' [0-9A-Fa-f_]*)? ([Pp] [+-]? [0-9] [0-9_]* )?
+  /* ws: explicit */
+
+CharLiteral ::= "'" RegularChar "'"
+  | "'" EscapeSequence "'"
+  /* ws: explicit */
+  
+EscapeSequence ::= '\' ([\"'ntbr] | Space)
+  | '\' [0-9] [0-9] [0-9]
+  | '\x' [0-9A-Fa-f] [0-9A-Fa-f]
+  | '\o' [0-3] [0-7] [0-7]
+  /* ws: explicit */
+
+StringLiteral ::= '"' StringCharacter* '"'
+  | '{' QuotedStringId '|' AnyChar '|' QuotedStringId '}'
+  /* ws: explicit */
+
+QuotedStringId ::= [a-z_]*
+
+StringCharacter ::= RegularStringChar
+  | '\u{' [0-9A-Fa-f]+ '}'
+  | '\' Newline (Space | Tab)
+  /* ws: explicit */
+
+LabelName ::= LowercaseIdent
+Label ::= '~' LabelName ':' /* ws: explicit */
+OptLabel ::= '?' LabelName ':' /* ws: explicit */
+
+InfixSymbol ::= (CoreOperatorChar | '%' | '<') OperatorChar*
+  | '#' OperatorChar+
+  /* ws: explicit */
+
+PrefixSymbol ::= '!' OperatorChar*
+  | [?~] OperatorChar+
+  /* ws: explicit */
+
+OperatorChar ::= [~!?%<:.] | CoreOperatorChar
+CoreOperatorChar ::= [$&*+/=>@^|-]
+LinenumDirective ::= '#' [0-9]+ '"' StringCharacter '"'
+
+Comment ::= '(*' ([^*] | '*'+ [^*)])* '*)' /* ws: explicit */
